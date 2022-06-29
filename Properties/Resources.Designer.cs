@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PCM-WeeklySaveCopier.Properties {
+namespace PCMWeeklySaveCopier.Properties {
     using System;
     
     

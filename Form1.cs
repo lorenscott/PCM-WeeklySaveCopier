@@ -53,7 +53,7 @@ namespace WinFormsApp1
                 listView1.Items.Add(lvi);
             }
 
-            // Set the column number that is to be sorted; default to ascending.
+            // Set the initial sort to be on the second column (Date), descending.
             lvwColumnSorter.SortColumn = 1;
             lvwColumnSorter.Order = SortOrder.Descending;
             listView1.Sort();
@@ -123,16 +123,20 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Use Path class to manipulate file and directory paths.
+            // Use Path class to manipulate source and destination file names and directory paths.
             string sourceFile = System.IO.Path.Combine(textBox1.Text, listView1.SelectedItems[0].SubItems[0].Text);
             string destFile = System.IO.Path.Combine(textBox2.Text, textBox3.Text);
 
-            // To copy a file to another location and
-            // overwrite the destination file if it already exists.
+            // Copy file to destination, overwriting same file name if it already exists.
             System.IO.File.Copy(sourceFile, destFile, true);
 
             if (System.IO.File.Exists(destFile))
                 MessageBox.Show(textBox3.Text + " copied!");
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            button1.Enabled = ((textBox3.TextLength >= 5) && (textBox3.Text.ToLower().EndsWith(".cdb")));
         }
     }
 }
