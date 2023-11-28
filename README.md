@@ -1,5 +1,5 @@
 # PCM-WeeklySaveCopier
-Pro Cycling Manager 2021 Weekly Saved File Copier
+Pro Cycling Manager Weekly Saved File Copier
 
 When needing to restore from a weekly save within Pro Cycling Manager, 
 it can be difficult to remember where the backup files are stored, and where 
