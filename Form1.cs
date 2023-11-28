@@ -34,15 +34,23 @@ namespace WinFormsApp1
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void RefreshList()
         {
-
             DateTime dDateTime;
             long lLen;
 
             ListViewItem lvi;
             listView1.Items.Clear();
-            DirectoryInfo dinfo = new DirectoryInfo(textBox1.Text);
+
+            // Check if the directory exists
+            if (!Directory.Exists(txtSourceFolder.Text))
+            {
+                MessageBox.Show("The specified folder does not exist.", "Folder Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSourceFolder.Focus();
+                return; // Exit the function if the folder doesn't exist
+            }
+
+            DirectoryInfo dinfo = new DirectoryInfo(txtSourceFolder.Text);
             FileInfo[] smFiles = dinfo.GetFiles("*.cdb");
             foreach (FileInfo fi in smFiles)
             {
@@ -57,7 +65,24 @@ namespace WinFormsApp1
             lvwColumnSorter.SortColumn = 1;
             lvwColumnSorter.Order = SortOrder.Descending;
             listView1.Sort();
- 
+        }
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            string userName = Environment.UserName;
+            string subFolderName = "LorenScott"; // TO-DO: Figure out how to dynamically set this at run-time
+            string basePath = @"C:\Users\";
+
+            // Construct the path dynamically
+            string fullPath = Path.Combine(basePath, $"{userName}\\AppData\\Roaming\\Pro Cycling Manager 2023\\WeeklySaves\\{subFolderName}");
+
+            // Set the Text property of txtSourceFolder
+            txtSourceFolder.Text = fullPath;
+
+            RefreshList();
+  
             // Give focus to the list of file names
             listView1.Focus();
         }
@@ -92,7 +117,24 @@ namespace WinFormsApp1
             if (this.listView1.SelectedItems.Count == 0)
                 return;
 
-            textBox3.Text = this.listView1.SelectedItems[0].SubItems[0].Text;
+            string s = this.listView1.SelectedItems[0].SubItems[0].Text;
+            int i;
+            int count = 0;
+
+            for (i = s.Length - 1; i >= 0; i--)
+            {
+
+                if (s[i] == '-')
+                {
+                    count++;
+                    if (count == 3)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            txtNewFileName.Text = s.Substring(i + 1, s.Length - i - 1);
         }
 
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -124,19 +166,40 @@ namespace WinFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             // Use Path class to manipulate source and destination file names and directory paths.
-            string sourceFile = System.IO.Path.Combine(textBox1.Text, listView1.SelectedItems[0].SubItems[0].Text);
-            string destFile = System.IO.Path.Combine(textBox2.Text, textBox3.Text);
+            string sourceFile = System.IO.Path.Combine(txtSourceFolder.Text, listView1.SelectedItems[0].SubItems[0].Text);
+            string destFile = System.IO.Path.Combine(txtDestFolder.Text, txtNewFileName.Text);
 
             // Copy file to destination, overwriting same file name if it already exists.
             System.IO.File.Copy(sourceFile, destFile, true);
 
             if (System.IO.File.Exists(destFile))
-                MessageBox.Show(textBox3.Text + " copied!");
+                MessageBox.Show(txtNewFileName.Text + " copied!");
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            button1.Enabled = ((textBox3.TextLength >= 5) && (textBox3.Text.ToLower().EndsWith(".cdb")));
+            btnCopy.Enabled = ((txtNewFileName.TextLength >= 5) && (txtNewFileName.Text.ToLower().EndsWith(".cdb")));
+        }
+
+        private void txtSourceFolder_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSourceFolder_Leave(object sender, EventArgs e)
+        {
+            RefreshList();
+        }
+
+        private void txtDestFolder_Leave(object sender, EventArgs e)
+        {
+            // Check if the directory exists
+            if (!Directory.Exists(txtDestFolder.Text))
+            {
+                MessageBox.Show("The specified folder does not exist.", "Folder Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDestFolder.Focus();
+                return; // Exit the function if the folder doesn't exist
+            }
         }
     }
 }

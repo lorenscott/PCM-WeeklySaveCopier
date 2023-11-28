@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnCopy = new System.Windows.Forms.Button();
+            this.txtNewFileName = new System.Windows.Forms.TextBox();
+            this.txtDestFolder = new System.Windows.Forms.TextBox();
+            this.txtSourceFolder = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,10 +47,10 @@
             // panel1
             // 
             this.panel1.AllowDrop = true;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.btnCopy);
+            this.panel1.Controls.Add(this.txtNewFileName);
+            this.panel1.Controls.Add(this.txtDestFolder);
+            this.panel1.Controls.Add(this.txtSourceFolder);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -61,55 +61,58 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // button1
+            // btnCopy
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(662, 70);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "COPY";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCopy.Enabled = false;
+            this.btnCopy.Location = new System.Drawing.Point(662, 70);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(75, 23);
+            this.btnCopy.TabIndex = 5;
+            this.btnCopy.Text = "COPY";
+            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox3
+            // txtNewFileName
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtNewFileName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(122, 70);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PlaceholderText = "New File Name";
-            this.textBox3.Size = new System.Drawing.Size(534, 23);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.txtNewFileName.Location = new System.Drawing.Point(122, 70);
+            this.txtNewFileName.Name = "txtNewFileName";
+            this.txtNewFileName.PlaceholderText = "New File Name";
+            this.txtNewFileName.Size = new System.Drawing.Size(534, 23);
+            this.txtNewFileName.TabIndex = 3;
+            this.txtNewFileName.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // textBox2
+            // txtDestFolder
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtDestFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(122, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "Destination Folder";
-            this.textBox2.Size = new System.Drawing.Size(615, 23);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "C:\\Users\\Loren\'s Tablet\\AppData\\Roaming\\Pro Cycling Manager 2021\\Cloud\\LorenScott" +
+            this.txtDestFolder.Location = new System.Drawing.Point(122, 38);
+            this.txtDestFolder.Name = "txtDestFolder";
+            this.txtDestFolder.PlaceholderText = "Destination Folder";
+            this.txtDestFolder.Size = new System.Drawing.Size(615, 23);
+            this.txtDestFolder.TabIndex = 2;
+            this.txtDestFolder.Text = "C:\\Users\\Loren\'s Tablet\\AppData\\Roaming\\Pro Cycling Manager 2023\\Cloud\\LorenScott" +
     "";
+            this.txtDestFolder.Leave += new System.EventHandler(this.txtDestFolder_Leave);
             // 
-            // textBox1
+            // txtSourceFolder
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtSourceFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(122, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Source Folder";
-            this.textBox1.Size = new System.Drawing.Size(615, 23);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "C:\\Users\\Loren\'s Tablet\\AppData\\Roaming\\Pro Cycling Manager 2021\\WeeklySaves\\Lore" +
+            this.txtSourceFolder.Location = new System.Drawing.Point(122, 6);
+            this.txtSourceFolder.Name = "txtSourceFolder";
+            this.txtSourceFolder.PlaceholderText = "Source Folder";
+            this.txtSourceFolder.Size = new System.Drawing.Size(615, 23);
+            this.txtSourceFolder.TabIndex = 1;
+            this.txtSourceFolder.Text = "C:\\Users\\Loren\'s Tablet\\AppData\\Roaming\\Pro Cycling Manager 2023\\WeeklySaves\\Lore" +
     "nScott";
+            this.txtSourceFolder.TextChanged += new System.EventHandler(this.txtSourceFolder_TextChanged);
+            this.txtSourceFolder.Leave += new System.EventHandler(this.txtSourceFolder_Leave);
             // 
             // label3
             // 
@@ -192,7 +195,7 @@
             this.MinimumSize = new System.Drawing.Size(765, 300);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pro Cycling Manager Weekly Save Copier";
+            this.Text = "Pro Cycling Manager Weekly Save Copier v2.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -206,10 +209,10 @@
         private Label label3;
         private Label label2;
         private FolderBrowserDialog folderBrowserDialog1;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private Button button1;
+        private TextBox txtNewFileName;
+        private TextBox txtDestFolder;
+        private TextBox txtSourceFolder;
+        private Button btnCopy;
         private ListView listView1;
         private ColumnHeader colFileName;
         private ColumnHeader colDateTime;
