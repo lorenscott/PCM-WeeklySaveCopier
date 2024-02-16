@@ -1,7 +1,7 @@
 # PCM-WeeklySaveCopier
-Pro Cycling Manager Weekly Saved File Copier
+Pro Cycling Manager 2023 Weekly Saved File Copier
 
-When needing to restore from a weekly save within Pro Cycling Manager, 
+When needing to restore from a weekly save within Pro Cycling Manager 2023, 
 it can be difficult to remember where the backup files are stored, and where 
 the desired backup needs to be copied to. This utility makes that easier.
 
