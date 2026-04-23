@@ -1,4 +1,4 @@
-# PCM Weekly Save Copier v3.0
+# PCM Weekly Save Copier v3.1
 
 A Windows utility for restoring weekly saves in **Pro Cycling Manager** (Steam edition).
 
@@ -112,5 +112,6 @@ dotnet run
 
 | Version | Changes |
 |---------|---------|
-| **3.0** | Auto PCM version detection; version selector dropdown; FileSystemWatcher auto-refresh; open-in-Explorer buttons; persistent settings (paths + window state); Segoe MDL2 icon buttons; tooltips; overwrite confirmation; .NET 10 upgrade; modern Fluent-inspired UI |
+| **3.1** | Folder browse buttons now open a picker to select Source/Destination folders and update the fields; file list refreshes automatically after source folder change |
+| **3.0** | Auto PCM version detection; version selector dropdown; FileSystemWatcher auto-refresh; folder browse buttons; persistent settings (paths + window state); Segoe MDL2 icon buttons; tooltips; overwrite confirmation; .NET 10 upgrade; modern Fluent-inspired UI |
 | **2.x** | Basic copy utility with hardcoded paths |

@@ -256,7 +256,7 @@ namespace WinFormsApp1
             this.MinimumSize = new System.Drawing.Size(816, 500);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pro Cycling Manager Weekly Save Copier v3.0";
+            this.Text = "Pro Cycling Manager Weekly Save Copier v3.1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
