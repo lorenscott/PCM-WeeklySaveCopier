@@ -27,8 +27,8 @@ namespace WinFormsApp1
             tt.SetToolTip(cboVersion, "Select the installed PCM version to work with");
             tt.SetToolTip(txtSourceFolder, "Weekly Saves folder — .cdb files listed below come from here");
             tt.SetToolTip(txtDestFolder, "Active game database folder — the selected save will be copied here");
-            tt.SetToolTip(btnOpenSource, "Open source folder in Explorer");
-            tt.SetToolTip(btnOpenDest, "Open destination folder in Explorer");
+            tt.SetToolTip(btnOpenSource, "Browse for source folder");
+            tt.SetToolTip(btnOpenDest, "Browse for destination folder");
             tt.SetToolTip(btnCopy, "Copy the selected weekly save to the active game database folder");
             tt.SetToolTip(listView1, "Select a save file to restore, then click COPY");
         }
@@ -333,8 +333,25 @@ namespace WinFormsApp1
             }
         }
 
-        private void btnOpenSource_Click(object sender, EventArgs e) => OpenFolderInExplorer(txtSourceFolder.Text);
-        private void btnOpenDest_Click(object sender, EventArgs e) => OpenFolderInExplorer(txtDestFolder.Text);
+        private void btnOpenSource_Click(object sender, EventArgs e)
+        {
+            using var dlg = new FolderBrowserDialog { Description = "Select Source Folder", UseDescriptionForTitle = true };
+            if (Directory.Exists(txtSourceFolder.Text)) dlg.InitialDirectory = txtSourceFolder.Text;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                txtSourceFolder.Text = dlg.SelectedPath;
+                SetupWatcher(txtSourceFolder.Text);
+                RefreshList();
+            }
+        }
+
+        private void btnOpenDest_Click(object sender, EventArgs e)
+        {
+            using var dlg = new FolderBrowserDialog { Description = "Select Destination Folder", UseDescriptionForTitle = true };
+            if (Directory.Exists(txtDestFolder.Text)) dlg.InitialDirectory = txtDestFolder.Text;
+            if (dlg.ShowDialog() == DialogResult.OK)
+                txtDestFolder.Text = dlg.SelectedPath;
+        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {

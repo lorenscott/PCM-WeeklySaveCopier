@@ -25,7 +25,7 @@ PCM saves your career progress as an active game database (`.cdb` file) and also
 - **Persistent settings** — folder paths, selected version, and window size/position are saved and restored between sessions
 - **Live file list** — auto-refreshes when new weekly saves appear (FileSystemWatcher)
 - **Overwrite protection** — prompts for confirmation only if the destination file already exists
-- **Open in Explorer** buttons — jump directly to either folder from within the app
+- **Folder browse** buttons — click the icon button beside either folder field to open a folder picker and set the path manually
 - **Sortable columns** — click any column header to sort by file name, date, or size
 - **Tooltips** on all controls
 
@@ -51,6 +51,8 @@ On first run, the app scans `%APPDATA%` and auto-fills:
 | **Destination Folder** | `%APPDATA%\Pro Cycling Manager 20XX\Cloud\<SteamID>` |
 
 If multiple PCM versions are installed, use the **PCM Version** dropdown to switch between them.
+
+If the auto-detected paths are wrong (e.g. non-standard install location), click the **folder icon button** at the right end of the Source or Destination field to open a folder picker and choose the correct folder manually. The file list refreshes immediately after a new source folder is selected.
 
 ### 2. Select a save to restore
 
